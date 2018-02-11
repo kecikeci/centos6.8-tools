@@ -16,21 +16,20 @@ RUN wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Cen
 RUN yum clean all
 RUN yum install -y yum-plugin-ovl || true
 RUN yum install -y vim tar wget curl rsync bzip2 iptables tcpdump less telnet net-tools lsof sysstat cronie passwd openssl openssh-server
-RUN yum clean all
 # 安装ssh
 RUN yum install passwd openssl openssh-server -y
-# RUN ssh-keygen -q -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ''
-# RUN ssh-keygen -q -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ''
-# RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key  -N ''
 RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
 RUN sed -i "s/#UsePrivilegeSeparation.*/UsePrivilegeSeparation no/g" /etc/ssh/sshd_config
 RUN sed -i "s/UsePAM.*/UsePAM no/g" /etc/ssh/sshd_config
-RUN echo "root:root" | chpasswd
+RUN echo "root:root123" | chpasswd
 # 安装htop
 # RUN rpm -ivh http://mirrors.sohu.com/fedora-epel/epel-release-latest-6.noarch.rpm
 # RUN yum install htop -y
 
+# 清除yum缓存
 RUN yum clean all
+RUN rm -rf /var/cache/yum/*
+
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
