@@ -4,7 +4,7 @@ centos6.8+阿里云yum源+ssh密码登录+常用软件
 ## 基于官方centos6.8镜像，https://c.163.com/hub#/m/repository/?repoId=2968
 登录网易云才能进去链接
 
-ssh初始密码root，可用passwd命令修改
+ssh初始密码root123，可用passwd命令修改
 
 自用基础镜像
 
