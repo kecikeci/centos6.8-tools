@@ -1,6 +1,6 @@
 # centos6.8+阿里云yum源+ssh密码登录+常用软件
 # 基于官方centos6.8镜像，https://c.163.com/hub#/m/repository/?repoId=2968
-# ssh初始密码root，可用passwd命令修改
+# ssh初始密码root123，可用passwd命令修改
 # 个人博客：https://4xx.me
 FROM hub.c.163.com/library/centos:6.8
 MAINTAINER https://4xx.me
